@@ -1,0 +1,32 @@
+.container {    //Estilos para cada elemento con clase container (ng-container)
+  margin: 20px;
+
+  mat-table {   //Estilos para los elementos mat-table
+    margin-top: 10px;
+    margin-bottom: 20px;
+
+    .mat-header-row {   //Estilos para la fila de cabecera de la tabla
+      background-color:#f5f5f5;
+
+      .mat-header-cell {    //Estilos para cada celda del encabezado
+        text-transform: uppercase;  //Convierte texto a mayúsculas
+        font-weight: bold;  //Texto en negrita
+        color: #838383;
+      }      
+    }
+
+    .mat-column-id {    //Estilos para la columna id
+      flex: 0 0 20%;    //La columna ocupa el 20% del ancho disponible, no se encoge ni crece (0 0)
+      justify-content: center;
+    }
+
+    .mat-column-action {
+      flex: 0 0 10%;
+      justify-content: center;
+    }
+  }
+
+  .buttons {
+    text-align: right;
+  }
+}

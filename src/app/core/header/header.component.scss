@@ -1,0 +1,57 @@
+.mat-toolbar {
+  background-color: blue;
+  color: white;
+}
+
+.header_container {     //Definimos todos los estilos de los componentes que hay dentro de este contenedor juntos para que sea más legible
+    display: flex;      //Contenedor que es un flexbox para poner los elementos en fila
+    width: 100%;        //Contenedor ocupa todo el ancho de la pantalla
+    .header_title {
+        .mat-icon {
+            vertical-align: sub;    //Alinea el icono verticalmente con el texto
+        }
+    }
+
+    .header_separator {
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+
+    .header_menu {
+        flex-grow: 4;       //Para que el menú ocupe más espacio
+        display: flex;      //Los botones se colocan en fila
+        flex-direction: row;    //Indica la dirección en la que se colocan los botones
+
+        .header_button {
+            margin-left: 1em;
+            margin-right: 1em;
+            font-size: 16px;
+
+            a {     //Quitamos el subrayado de los enlaces y definimos el color en el que queremos que aparezcan
+              font-weight: lighter;
+              text-decoration: none;
+              cursor: pointer;
+              color: white;
+            }
+
+            a:hover {   //Para que al pasar el ratón por encima de los enlaces cambie el color
+              color: grey;
+            }
+
+            a.active {  //Cuando pulsamos sobre un enlace, se subraya y cambia el color para que destaque más
+              font-weight: normal;
+              text-decoration: underline;
+              color: lightyellow;
+            }
+
+        }
+    }
+
+    .header_login {
+      font-size: 16px;
+      cursor: pointer;  //El cursor cambia a una mano para indicar que es un enlace
+      .mat-icon {
+          vertical-align: sub;    //Alinea el icono verticalmente con el texto
+      }
+  }
+}
