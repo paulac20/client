@@ -1,0 +1,12 @@
+<div class="container">
+    <!--Ponemos el título como una variable para que sea uno u otro según en la acción en la 
+    que se esté usando el componente-->
+    <h1>{{title}}</h1>
+    <!--[innerHTML] para vincular una propiedad del HTML con una expresión/variable de TypeScript-->
+    <div [innerHTML]="description" class="description"></div>
+
+    <div class="buttons">
+        <button mat-stroked-button (click)="onNo()">No</button>
+        <button mat-flat-button color="primary" (click)="onYes()">Sí</button>
+    </div>
+</div>    

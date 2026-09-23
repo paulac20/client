@@ -4,6 +4,7 @@ import { Category } from '../model/category';
 import { CategoryService } from '../category.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CategoryEditComponent } from '../category-edit/category-edit.component';
+import { DialogConfirmationComponent } from 'src/app/core/dialog-confirmation/dialog-confirmation.component';
 
 @Component({
   selector: 'app-category-list',
@@ -42,6 +43,37 @@ export class CategoryListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       this.ngOnInit();
     })
+  }
+
+  // Método para editar las categorías
+  editCategory(category: Category){
+    const dialogRef=this.dialog.open(CategoryEditComponent, {
+      // Pasamos el objeto con los datos rellenos para poder editarlos
+      data: {category:category}
+    });
+    
+    dialogRef.afterClosed().subscribe(result => {
+      this.ngOnInit();
+    })
+  }
+
+  deleteCategory(category: Category){
+    const dialogRef=this.dialog.open(DialogConfirmationComponent, {
+      // Definimos los datos que le vamos a pasar al componente del diálogo
+      data: {title: "Eliminar categoría", 
+        description: "Atención si borra la categoría se perderán sus datos. <br> ¿Desea eliminar la categoría?"}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      // Si se ha pulsado "sí", devuelve true y entonces se llama al servicio de eliminar, pasándole
+      // el identificador del objeto a eliminar para que sólo se elimine ese objeto
+      if (result){
+        // Con .subscribe() le decimos que cuando acabe la eliminación, se ejecute ngOnInit()
+        this.categoryService.deleteCategory(category.id).subscribe(result => {
+          this.ngOnInit();
+        });
+      }
+    });
   }
 
 }
