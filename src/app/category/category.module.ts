@@ -3,20 +3,30 @@ import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 
 import { CategoryListComponent } from './category-list/category-list.component';
+import { CategoryEditComponent } from './category-edit/category-edit.component';
 
 
 
 @NgModule({
   declarations: [
-    CategoryListComponent
+    CategoryListComponent,
+    CategoryEditComponent
   ],
   imports: [
     CommonModule,
     MatTableModule,
     MatIconModule, 
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule,
+  ],
+  providers: [    // Para indicar los servicios y dependencias que están disponibles para usar
+    {
+      provide: MAT_DIALOG_DATA,
+      useValue: {},   // Al usar MAT_DIALOG_DATA le indicamos que use como valor el obejeto vacío
+    },
   ]
 })
 export class CategoryModule { }
