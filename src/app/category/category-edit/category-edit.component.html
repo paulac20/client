@@ -1,1 +1,24 @@
-<p>category-edit works!</p>
+<div class="container">
+    <h1>Crear categoría</h1>
+
+    <form>
+        <mat-form-field>
+            <!--El identificador lo ponemos como un placeholder de sólo lectura-->
+            <mat-label>Identificador</mat-label>
+            <!--[(ngmodel)] sirve para vincular el valor de un elemento HTML con una variable del componente TypeScript-->
+            <input type="text" matInput placeholder="Identificador" [(ngModel)]="category.id" name="id" disabled>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <!--Ponemos "required" para que si está vacío salte un error-->
+            <input type="text" matInput placeholder="Nombre de categoría" [(ngModel)]="category.name" name="name" required>
+            <mat-error>El nombre no puede estar vacío</mat-error>
+        </mat-form-field>
+    </form>
+
+    <div class="buttons">
+        <button mat-stroked-button (click)="onClose()">Cerrar</button>
+        <button mat-flat-button color="primary" (click)="onSave()">Guardar</button>
+    </div>
+</div>

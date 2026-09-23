@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Category } from '../model/category';
 import { CategoryService } from '../category.service';
-import {  MatDialog } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { CategoryEditComponent } from '../category-edit/category-edit.component';
 
 @Component({
@@ -38,7 +38,7 @@ export class CategoryListComponent implements OnInit {
       data :{}
     });
 
-    //Después de cerrar el diálogo, volvemos a cargar el listado de categorías llamando a ngOnInit()
+    // Después de cerrar el diálogo, volvemos a cargar el listado de categorías llamando a ngOnInit()
     dialogRef.afterClosed().subscribe(result => {
       this.ngOnInit();
     })
