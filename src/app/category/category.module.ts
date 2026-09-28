@@ -8,6 +8,7 @@ import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { CategoryListComponent } from './category-list/category-list.component';
 import { CategoryEditComponent } from './category-edit/category-edit.component';
@@ -29,6 +30,7 @@ import { CategoryEditComponent } from './category-edit/category-edit.component';
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [    // Para indicar los servicios y dependencias que están disponibles para usar
     {
