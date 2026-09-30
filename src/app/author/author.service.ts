@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Pageable } from '../core/model/page/Pageable';
@@ -10,17 +11,22 @@ import { AUTHOR_DATA } from './model/mock-authors';
 })
 export class AuthorService {
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) {}
 
   getAuthors(pageable: Pageable): Observable<AuthorPage> {
-        return of(AUTHOR_DATA);
-    }
+      return this.http.post<AuthorPage>('http://localhost:8080/author', {pageable:pageable});
+  }
 
-    saveAuthor(author: Author): Observable<void> {
-      return of(undefined);
-    }
+  saveAuthor(author: Author): Observable<void> {
+    let url = 'http://localhost:8080/author';
+    if (author.id != null) url += '/'+author.id;
 
-    deleteAuthor(idAuthor : number): Observable<void> {
-      return of(undefined);
-    }    
+    return this.http.put<void>(url, author);
+  }
+
+  deleteAuthor(idAuthor : number): Observable<void> {
+    return this.http.delete<void>('http://localhost:8080/author/'+idAuthor);
+  }    
 }
