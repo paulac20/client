@@ -10,6 +10,7 @@
 
             <mat-form-field>
                 <mat-label>Categoría del juego</mat-label>
+                <!--Con {{category.name}} cogemos las diferentes categorías existentes para el desplegable-->
                 <mat-select disableRipple [(ngModel)]="filterCategory" name="category">
                     <mat-option *ngFor="let category of categories" [value]="category">{{category.name}}</mat-option>
                 </mat-select>
@@ -23,7 +24,9 @@
     </div>   
 
     <div class="game-list">
-        <app-game-item *ngFor="let game of games; let i = index;" (click)="editGame(game)">
+        <!--Le pasamos a cada componente la información del juego como un dato de entrada input
+        hacia el componente-->
+        <app-game-item *ngFor="let game of games; let i = index;" (click)="editGame(game)" [game]="game">
         </app-game-item>
     </div>
 
