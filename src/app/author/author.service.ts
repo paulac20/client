@@ -31,7 +31,7 @@ export class AuthorService {
   }    
 
   // Para poder recuperar una lista de autores. Antes sólo teníamos una página
-  getAllAuthors(): Observable<Author[]>{
-    return of(AUTHOR_DATA_LIST);
-  }
+  getAllAuthors(): Observable<Author[]> {
+        return this.http.get<Author[]>('http://localhost:8080/author');
+    }
 }
