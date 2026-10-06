@@ -4,6 +4,7 @@ import { Client } from '../model/Client';
 import { ClientService } from '../client.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ClientEditComponent } from '../client-edit/client-edit.component';
+import { DialogConfirmationComponent } from 'src/app/core/dialog-confirmation/dialog-confirmation.component';
 
 @Component({
   selector: 'app-client-list',
@@ -42,5 +43,20 @@ export class ClientListComponent implements OnInit{
     dialogRef.afterClosed().subscribe(result => {
       this.ngOnInit();
     })
+  }
+
+  deleteClient(client: Client){
+    const dialogRef= this.dialog.open(DialogConfirmationComponent, {
+      data: {title: "Eliminar categoría", 
+        description: "Atención si borra la categoría se perderán sus datos. <br> ¿Desea eliminar la categoría?"}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result){
+        this.clientService.deleteClient(client.id).subscribe(result => {
+          this.ngOnInit();
+        });
+      }
+    });
   }
 }
