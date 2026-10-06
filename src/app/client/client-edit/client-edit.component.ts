@@ -11,6 +11,8 @@ import { ClientService } from '../client.service';
 export class ClientEditComponent implements OnInit{
 
   client!: Client
+  error!: String
+  requestFailed!: boolean
 
   constructor(
     public dialogRef: MatDialogRef<ClientEditComponent>,
@@ -30,7 +32,14 @@ export class ClientEditComponent implements OnInit{
   onSave(){
     this.clientService.saveClient(this.client).subscribe(retult => {
       this.dialogRef.close();
+    }, res=>{
+      this.requestFailed=true;
+      this.showError(res);
     });
+  }
+
+  showError(res: any){
+    this.error='Ya existe un cliente con ese nombre.'
   }
 
   onClose(){
