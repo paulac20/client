@@ -1,1 +1,49 @@
-<p>prestamo-edit works!</p>
+<div class="container">
+    <h1>Crear juego</h1>
+
+    <form>
+        <mat-form-field>
+            <mat-label>Identificador</mat-label>
+            <input type="text" matInput placeholder="Identificador" [(ngModel)]="prestamo.id" name="id" disabled>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Nombre del cliente</mat-label>
+            <!--<mat-select dissableRipple [(ngModel)]="prestamo.client" name="client" required>
+                <mat-option *ngFor="let client of clients" [value]="client">{{client.name}}</mat-option>
+            </mat-select>-->
+            <input type="text" matInput placeholder="Nombre del cliente" [(ngModel)]="prestamo.client" name="title" required>
+            <mat-error>El nombre del cliente no puede estar vacío</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Nombre del juego</mat-label>
+            <!--<mat-select dissableRipple [(ngModel)]="prestamo.game" name="game" required>
+                <mat-option *ngFor="let game of games" [value]="game">{{game.title}}</mat-option>
+            </mat-select>-->
+            <input type="text" matInput placeholder="Título del juego" [(ngModel)]="prestamo.game" name="title" required>
+            <mat-error>El nombre del juego no puede estar vacío</mat-error>
+        </mat-form-field>
+
+        <mat-label style="color: aliceblue;">Fechas de préstamo</mat-label>
+
+        <mat-form-field>
+            <input matInput [matDatepicker]="pickerini" placeholder="Fecha de préstamo">
+            <mat-datepicker-toggle matSuffix [for]="pickerini"></mat-datepicker-toggle>
+            <mat-datepicker #pickerini></mat-datepicker>
+            <mat-error>Las fechas de préstamos no pueden estar vacías</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput [matDatepicker]="pickerfin" placeholder="Fecha de devolución">
+            <mat-datepicker-toggle matSuffix [for]="pickerfin"></mat-datepicker-toggle>
+            <mat-datepicker #pickerfin></mat-datepicker>
+            <mat-error>Las fechas de préstamos no pueden estar vacías</mat-error>
+        </mat-form-field>
+    </form>
+
+    <div class="buttons">
+        <button mat-stroked-button (click)="onClose()">Cerrar</button>
+        <button mat-flat-button color="primary" (click)="onSave()">Guardar</button>
+    </div>
+</div>

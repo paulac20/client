@@ -12,7 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { HttpBackend, HttpClient } from '@angular/common/http';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 
 
@@ -40,6 +40,8 @@ import { HttpBackend, HttpClient } from '@angular/common/http';
       provide: MAT_DIALOG_DATA,
       useValue: {},
     },
+    { provide: MAT_DATE_LOCALE, 
+      useValue: 'es-ES' }
   ]
 })
 export class PrestamoModule { }
