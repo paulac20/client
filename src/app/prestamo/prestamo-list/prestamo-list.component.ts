@@ -18,11 +18,11 @@ import { DialogConfirmationComponent } from 'src/app/core/dialog-confirmation/di
   styleUrls: ['./prestamo-list.component.scss']
 })
 export class PrestamoListComponent implements OnInit{
-    /*games!: Game[];
+    games!: Game[];
     clients!: Client[];
     filterTitle!: Game | null;
     filterClient!: Client | null;
-    filterDate!: Date | null;*/
+    filterDate!: Date | null;
     pageNumber: number=0;
     pageSize: number = 5;
     totalElements: number = 0;
@@ -32,21 +32,21 @@ export class PrestamoListComponent implements OnInit{
 
     constructor(
       private prestamoService: PrestamoService,
-      /*private gameService: GameService,
-      private clientService: ClientService,*/
+      private gameService: GameService,
+      private clientService: ClientService,
       public dialog: MatDialog
     ){}
 
     ngOnInit(): void {
       this.loadPage();
 
-      /*this.gameService.getGames().subscribe(
+      this.gameService.getGames().subscribe(
         games => this.games = games
       );
 
       this.clientService.getClients().subscribe(
         clients => this.clients= clients
-      );*/
+      );
     }
 
     loadPage(event?: PageEvent){
@@ -72,7 +72,7 @@ export class PrestamoListComponent implements OnInit{
       })
     }
 
-    /*onCleanFilter(): void {
+    onCleanFilter(): void {
       this.filterTitle = null;
       this.filterClient = null;
       this.filterDate = null;
@@ -84,7 +84,7 @@ export class PrestamoListComponent implements OnInit{
       const title = this.filterTitle != null ? this.filterTitle.id : undefined;
       const clientId = this.filterClient != null ? this.filterClient.id : undefined;
       const date = this.filterDate ?? undefined;
-    }*/
+    }
 
     createPrestamo(){
       const dialogRef = this.dialog.open(PrestamoEditComponent, {

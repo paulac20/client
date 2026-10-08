@@ -13,8 +13,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
-import { MatSelect, MatSelectModule } from '@angular/material/select';
-
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
@@ -43,7 +42,8 @@ import { MatSelect, MatSelectModule } from '@angular/material/select';
       useValue: {},
     },
     { provide: MAT_DATE_LOCALE, 
-      useValue: 'es-ES' }
+      useValue: 'es-ES' 
+    }
   ]
 })
 export class PrestamoModule { }

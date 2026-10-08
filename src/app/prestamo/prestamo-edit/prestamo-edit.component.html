@@ -9,7 +9,7 @@
 
         <mat-form-field>
             <mat-label>Nombre del cliente</mat-label>
-            <mat-select dissableRipple [(ngModel)]="prestamo.client" name="client" required>
+            <mat-select disableRipple [(ngModel)]="prestamo.client" name="client" required>
                 <mat-option *ngFor="let client of clients" [value]="client">{{client.name}}</mat-option>
             </mat-select>
             <mat-error>El nombre del cliente no puede estar vacío</mat-error>
@@ -17,7 +17,7 @@
 
         <mat-form-field>
             <mat-label>Nombre del juego</mat-label>
-            <mat-select dissableRipple [(ngModel)]="prestamo.game" name="game" required>
+            <mat-select disableRipple [(ngModel)]="prestamo.game" name="game" required>
                 <mat-option *ngFor="let game of games" [value]="game">{{game.title}}</mat-option>
             </mat-select>
             <mat-error>El nombre del juego no puede estar vacío</mat-error>
@@ -26,14 +26,14 @@
         <mat-label style="color: aliceblue;">Fechas de préstamo</mat-label>
 
         <mat-form-field>
-            <input matInput [matDatepicker]="pickerini" placeholder="Fecha de préstamo">
+            <input matInput [matDatepicker]="pickerini" placeholder="Fecha de préstamo" [(ngModel)]="prestamo.date_ini" name="date_ini" required>
             <mat-datepicker-toggle matSuffix [for]="pickerini"></mat-datepicker-toggle>
             <mat-datepicker #pickerini></mat-datepicker>
             <mat-error>Las fechas de préstamos no pueden estar vacías</mat-error>
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput [matDatepicker]="pickerfin" placeholder="Fecha de devolución">
+            <input matInput [matDatepicker]="pickerfin" placeholder="Fecha de devolución" [(ngModel)]="prestamo.date_fin" name="date_fin" required>
             <mat-datepicker-toggle matSuffix [for]="pickerfin"></mat-datepicker-toggle>
             <mat-datepicker #pickerfin></mat-datepicker>
             <mat-error>Las fechas de préstamos no pueden estar vacías</mat-error>
