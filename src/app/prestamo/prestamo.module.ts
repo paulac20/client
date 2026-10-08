@@ -13,6 +13,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatSelect, MatSelectModule } from '@angular/material/select';
 
 
 
@@ -29,6 +30,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     MatButtonModule,
     MatDialogModule,
     MatInputModule,
+    MatSelectModule,
     FormsModule,
     ReactiveFormsModule,
     MatDatepickerModule,

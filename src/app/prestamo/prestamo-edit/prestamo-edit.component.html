@@ -9,19 +9,17 @@
 
         <mat-form-field>
             <mat-label>Nombre del cliente</mat-label>
-            <!--<mat-select dissableRipple [(ngModel)]="prestamo.client" name="client" required>
+            <mat-select dissableRipple [(ngModel)]="prestamo.client" name="client" required>
                 <mat-option *ngFor="let client of clients" [value]="client">{{client.name}}</mat-option>
-            </mat-select>-->
-            <input type="text" matInput placeholder="Nombre del cliente" [(ngModel)]="prestamo.client" name="title" required>
+            </mat-select>
             <mat-error>El nombre del cliente no puede estar vacío</mat-error>
         </mat-form-field>
 
         <mat-form-field>
             <mat-label>Nombre del juego</mat-label>
-            <!--<mat-select dissableRipple [(ngModel)]="prestamo.game" name="game" required>
+            <mat-select dissableRipple [(ngModel)]="prestamo.game" name="game" required>
                 <mat-option *ngFor="let game of games" [value]="game">{{game.title}}</mat-option>
-            </mat-select>-->
-            <input type="text" matInput placeholder="Título del juego" [(ngModel)]="prestamo.game" name="title" required>
+            </mat-select>
             <mat-error>El nombre del juego no puede estar vacío</mat-error>
         </mat-form-field>
 

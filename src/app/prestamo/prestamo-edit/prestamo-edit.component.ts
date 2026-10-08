@@ -29,7 +29,7 @@ export class PrestamoEditComponent implements OnInit {
   ngOnInit(): void {
     this.prestamo= new Prestamo();
     
-    /*this.gameService.getGames().subscribe(
+    this.gameService.getGames().subscribe(
       games => {
         this.games = games;
 
@@ -40,10 +40,10 @@ export class PrestamoEditComponent implements OnInit {
           }
         }
       }
-    );*/
+    );
 
     
-    /*this.clientService.getClients().subscribe(
+    this.clientService.getClients().subscribe(
       clients => {
         this.clients = clients;
 
@@ -54,7 +54,7 @@ export class PrestamoEditComponent implements OnInit {
           }
         }
       }
-    );*/
+    );
   }
 
   onSave() {
