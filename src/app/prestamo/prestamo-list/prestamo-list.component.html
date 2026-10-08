@@ -40,22 +40,22 @@
 
         <ng-container matColumnDef="game">
             <mat-header-cell *matHeaderCellDef>Nombre del juego</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.game}}</mat-cell>
+            <mat-cell *matCellDef="let element">{{element.game.title}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="client">
             <mat-header-cell *matHeaderCellDef>Nombre del cliente</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.client}}</mat-cell>
+            <mat-cell *matCellDef="let element">{{element.client.name}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="date_ini">
             <mat-header-cell *matHeaderCellDef>Fecha del préstamo</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.fecha_ini}}</mat-cell>
+            <mat-cell *matCellDef="let element">{{element.date_ini}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="date_fin">
             <mat-header-cell *matHeaderCellDef>Fecha de devolución</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.fecha_fin}}</mat-cell>
+            <mat-cell *matCellDef="let element">{{element.date_fin}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="action">

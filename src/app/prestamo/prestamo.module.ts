@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { HttpBackend, HttpClient } from '@angular/common/http';
 
 
 
@@ -32,7 +33,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     ReactiveFormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatPaginatorModule
+    MatPaginatorModule,
   ],
   providers: [
     {
