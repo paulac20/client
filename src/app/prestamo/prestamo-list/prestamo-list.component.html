@@ -18,14 +18,14 @@
             </mat-form-field>
 
             <mat-form-field class="dates">
-                <input matInput [matDatepicker]="picker" placeholder="Fecha ...">
+                <input matInput [(ngModel)]="filterDate" name="date" [matDatepicker]="picker" placeholder="Fecha ...">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
         </form>
 
         <div class="buttons">
-            <button mat-flat-button color="primary" (click)="onSearch()">Filtrar</button>
+            <button mat-flat-button color="primary" (click)="loadPage()">Filtrar</button>
             <button class="clearFilter" mat-flat-button (click)="onCleanFilter()">Limpiar</button>
         </div>
 

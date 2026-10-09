@@ -20,9 +20,9 @@ import { DialogConfirmationComponent } from 'src/app/core/dialog-confirmation/di
 export class PrestamoListComponent implements OnInit{
     games!: Game[];
     clients!: Client[];
-    filterTitle!: Game | null;
-    filterClient!: Client | null;
-    filterDate!: Date | null;
+    filterTitle: Game | null = null;
+    filterClient: Client | null = null;
+    filterDate: Date | null = null;
     pageNumber: number=0;
     pageSize: number = 5;
     totalElements: number = 0;
@@ -64,12 +64,20 @@ export class PrestamoListComponent implements OnInit{
         pageable.pageNumber = event.pageIndex;
       }
 
-      this.prestamoService.getPrestamos(pageable).subscribe(data => {
+      const gameId = this.filterTitle != null ? this.filterTitle.id : undefined;
+      const clientId = this.filterClient != null ? this.filterClient.id : undefined;
+      const date = this.filterDate ?? undefined;
+
+      console.log(gameId);
+      console.log(clientId);
+      console.log(date);
+
+      this.prestamoService.getPrestamos(pageable, gameId, clientId, date).subscribe(data => {
         this.dataSource.data = data.content;
         this.pageNumber = data.pageable.pageNumber;
         this.pageSize = data.pageable.pageSize;
         this.totalElements = data.totalElements;
-      })
+      });
     }
 
     onCleanFilter(): void {
@@ -81,9 +89,8 @@ export class PrestamoListComponent implements OnInit{
     }
 
     onSearch(): void{
-      const title = this.filterTitle != null ? this.filterTitle.id : undefined;
-      const clientId = this.filterClient != null ? this.filterClient.id : undefined;
-      const date = this.filterDate != null ? this.filterDate : undefined;
+      this.pageNumber=0;
+      this.loadPage();
     }
 
     createPrestamo(){
