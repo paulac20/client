@@ -1,5 +1,6 @@
 <div class="container">
-    <h1>Crear juego</h1>
+    <h1 *ngIf="prestamo.id == null">Crear préstamo</h1>
+    <h1 *ngIf="prestamo.id != null">Modificar préstamo</h1>
 
     <form>
         <mat-form-field>

@@ -2,10 +2,8 @@
     margin: 20px;
 
     .filters{
-        display: flex
-        form{
-            
-        }
+        display: flex;
+        
         mat-form-field {
             width: 300px;
             margin-right: 20px;
@@ -15,7 +13,7 @@
             flex: auto;
             align-self: center;
 
-            button{
+            .clearFilter{
                 margin-left: 15px;
                 color: black;
                 background-color: rgb(159, 156, 156);
@@ -36,15 +34,16 @@
                 color: #838383;
             }
 
-            .mat-column-id {
-                flex: 0 0 20%;
-                justify-content: center;
-            }
+        }
 
-            .mat-column-action {
-                flex: 0 0 10%;
-                justify-content: center;
-            }
+        .mat-column-id {
+            flex: 0 0 20%;
+            justify-content: center;
+        }
+
+        .mat-column-action {
+            flex: 0 0 10%;
+            justify-content: center;
         }
     }
 

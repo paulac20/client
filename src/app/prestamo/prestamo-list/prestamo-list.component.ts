@@ -83,12 +83,22 @@ export class PrestamoListComponent implements OnInit{
     onSearch(): void{
       const title = this.filterTitle != null ? this.filterTitle.id : undefined;
       const clientId = this.filterClient != null ? this.filterClient.id : undefined;
-      const date = this.filterDate ?? undefined;
+      const date = this.filterDate != null ? this.filterDate : undefined;
     }
 
     createPrestamo(){
       const dialogRef = this.dialog.open(PrestamoEditComponent, {
         data: {}
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        this.ngOnInit();
+      });
+    }
+
+    editPrestamo(prestamo: Prestamo){
+      const dialogRef = this.dialog.open(PrestamoEditComponent, {
+        data: { prestamo: prestamo }
       });
 
       dialogRef.afterClosed().subscribe(result => {
@@ -102,11 +112,11 @@ export class PrestamoListComponent implements OnInit{
       });
 
       dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.prestamoService.deletePrestamo(prestamo.id).subscribe(result =>  {
-          this.ngOnInit();
-        }); 
-      }
-    });
+        if (result) {
+          this.prestamoService.deletePrestamo(prestamo.id).subscribe(result =>  {
+            this.ngOnInit();
+          }); 
+        }
+      });
     }
 }

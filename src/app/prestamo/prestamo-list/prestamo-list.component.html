@@ -25,8 +25,8 @@
         </form>
 
         <div class="buttons">
-            <button mat-strocked-button (click)="onCleanFilter()">Limpiar</button>
-            <button mat-strocked-button (click)="onSearch()">Filtrar</button>
+            <button mat-flat-button color="primary" (click)="onSearch()">Filtrar</button>
+            <button class="clearFilter" mat-flat-button (click)="onCleanFilter()">Limpiar</button>
         </div>
 
     </div>
@@ -57,9 +57,13 @@
             <mat-cell *matCellDef="let element">{{element.date_fin}}</mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="action">
+        <ng-container matColumnDef="action">            
             <mat-header-cell *matHeaderCellDef></mat-header-cell>
             <mat-cell *matCellDef="let element">
+                <button mat-icon-button color="primary" (click)="editPrestamo(element)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+
                 <button mat-icon-button color="accent" (click)="deletePrestamo(element)">
                     <mat-icon>clear</mat-icon>
                 </button>

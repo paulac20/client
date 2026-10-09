@@ -27,7 +27,11 @@ export class PrestamoEditComponent implements OnInit {
   ){}
 
   ngOnInit(): void {
-    this.prestamo= new Prestamo();
+    if(this.data.prestamo!=null){
+      this.prestamo = Object.assign({}, this.data.prestamo);
+    } else{
+      this.prestamo= new Prestamo();
+    }
     
     this.gameService.getGames().subscribe(
       games => {
