@@ -17,6 +17,9 @@ export class PrestamoEditComponent implements OnInit {
   prestamo!: Prestamo;
   games!: Game[];
   clients!: Client[];
+  requestFailed!: boolean;
+  errorClient!: String;
+  errorGame!: String;
 
   constructor(
     public dialogRef: MatDialogRef<PrestamoEditComponent>,
@@ -64,7 +67,15 @@ export class PrestamoEditComponent implements OnInit {
   onSave() {
     this.prestamoService.savePrestamo(this.prestamo).subscribe(result => {
         this.dialogRef.close();
-    });    
+    }, res=>{
+      this.requestFailed=true;
+      this.showError(res);
+    });
+  }
+
+  showError(res: any){
+    this.errorClient='Este cliente ya tiene un préstamo para estas fechas.'
+    this.errorGame='Este juego ya está prestado para estas fechas.'
   }  
 
   onClose() {

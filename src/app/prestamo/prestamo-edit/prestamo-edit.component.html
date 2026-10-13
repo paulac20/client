@@ -14,6 +14,9 @@
                 <mat-option *ngFor="let client of clients" [value]="client">{{client.name}}</mat-option>
             </mat-select>
             <mat-error>El nombre del cliente no puede estar vacío</mat-error>
+            <div [hidden]="!requestFailed">
+                <small>{{errorClient}}</small>
+            </div>
         </mat-form-field>
 
         <mat-form-field>
@@ -22,6 +25,9 @@
                 <mat-option *ngFor="let game of games" [value]="game">{{game.title}}</mat-option>
             </mat-select>
             <mat-error>El nombre del juego no puede estar vacío</mat-error>
+            <div [hidden]="!requestFailed">
+                <small>{{errorGame}}</small>
+            </div>
         </mat-form-field>
 
         <mat-label style="color: aliceblue;">Fechas de préstamo</mat-label>
