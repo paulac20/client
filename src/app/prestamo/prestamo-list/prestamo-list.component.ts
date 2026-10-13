@@ -28,7 +28,7 @@ export class PrestamoListComponent implements OnInit{
     totalElements: number = 0;
 
     dataSource = new MatTableDataSource<Prestamo>();
-    displayedColumns: string[] = ['id', 'game', 'client', 'date_ini', 'date_fin', 'action'];
+    displayedColumns: string[] = ['id', 'game', 'client', 'dateIni', 'dateFin', 'action'];
 
     constructor(
       private prestamoService: PrestamoService,
@@ -110,10 +110,11 @@ export class PrestamoListComponent implements OnInit{
     }
 
     deletePrestamo(prestamo: Prestamo){
+      console.log(prestamo);
       const dialogRef = this.dialog.open(DialogConfirmationComponent, {
         data: { title: "Eliminar autor", description: "Atención si borra el autor se perderán sus datos.<br> ¿Desea eliminar el autor?" }
       });
-
+      
       dialogRef.afterClosed().subscribe(result => {
         if (result) {
           this.prestamoService.deletePrestamo(prestamo.id).subscribe(result =>  {
