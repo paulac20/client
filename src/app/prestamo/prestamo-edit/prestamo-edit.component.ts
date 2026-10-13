@@ -74,8 +74,12 @@ export class PrestamoEditComponent implements OnInit {
   }
 
   showError(res: any){
-    this.errorClient='Este cliente ya tiene un préstamo para estas fechas.'
-    this.errorGame='Este juego ya está prestado para estas fechas.'
+    console.log(res);
+    if(res.error === "CLIENT_ALREADY_HAS_PRESTAMO"){
+      this.errorClient='Este cliente ya tiene un préstamo para estas fechas.'
+    }else if (res.error === "GAME_ALREADY_PRESTADO"){
+      this.errorGame='Este juego ya está prestado para estas fechas.'
+    }    
   }  
 
   onClose() {
