@@ -27,14 +27,14 @@
         <mat-label style="color: aliceblue;">Fechas de préstamo</mat-label>
 
         <mat-form-field>
-            <input matInput [matDatepicker]="pickerini" placeholder="Fecha de préstamo" [(ngModel)]="prestamo.date_ini" name="date_ini" required>
+            <input matInput [matDatepicker]="pickerini" placeholder="Fecha de préstamo" [(ngModel)]="prestamo.dateIni" name="dateIni" required>
             <mat-datepicker-toggle matSuffix [for]="pickerini"></mat-datepicker-toggle>
             <mat-datepicker #pickerini></mat-datepicker>
             <mat-error>Las fechas de préstamos no pueden estar vacías</mat-error>
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput [matDatepicker]="pickerfin" placeholder="Fecha de devolución" [(ngModel)]="prestamo.date_fin" name="date_fin" required>
+            <input matInput [matDatepicker]="pickerfin" placeholder="Fecha de devolución" [(ngModel)]="prestamo.dateFin" name="dateFin" required>
             <mat-datepicker-toggle matSuffix [for]="pickerfin"></mat-datepicker-toggle>
             <mat-datepicker #pickerfin></mat-datepicker>
             <mat-error>Las fechas de préstamos no pueden estar vacías</mat-error>

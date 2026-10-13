@@ -30,7 +30,7 @@ export class ClientEditComponent implements OnInit{
   }
 
   onSave(){
-    this.clientService.saveClient(this.client).subscribe(retult => {
+    this.clientService.saveClient(this.client).subscribe(result => {
       this.dialogRef.close();
     }, res=>{
       this.requestFailed=true;

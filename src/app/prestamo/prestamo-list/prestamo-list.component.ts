@@ -110,7 +110,6 @@ export class PrestamoListComponent implements OnInit{
     }
 
     deletePrestamo(prestamo: Prestamo){
-      console.log(prestamo);
       const dialogRef = this.dialog.open(DialogConfirmationComponent, {
         data: { title: "Eliminar autor", description: "Atención si borra el autor se perderán sus datos.<br> ¿Desea eliminar el autor?" }
       });
