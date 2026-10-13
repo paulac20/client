@@ -66,11 +66,7 @@ export class PrestamoListComponent implements OnInit{
 
       const gameId = this.filterTitle != null ? this.filterTitle.id : undefined;
       const clientId = this.filterClient != null ? this.filterClient.id : undefined;
-      const date = this.filterDate ?? undefined;
-
-      console.log(gameId);
-      console.log(clientId);
-      console.log(date);
+      const date = this.filterDate ? this.filterDate.toLocaleDateString('en-CA') : undefined;
 
       this.prestamoService.getPrestamos(pageable, gameId, clientId, date).subscribe(data => {
         this.dataSource.data = data.content;

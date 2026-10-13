@@ -15,7 +15,7 @@ export class PrestamoService {
     private http: HttpClient
   ) { }
 
-  getPrestamos(pageable: Pageable, gameId?: number, clientId?: number, date?: Date): Observable<PrestamoPage>{
+  getPrestamos(pageable: Pageable, gameId?: number, clientId?: number, date?: string): Observable<PrestamoPage>{
     return this.http.post<PrestamoPage>('http://localhost:8080/prestamo', {pageable:pageable, gameId, clientId, date});
   }
 
