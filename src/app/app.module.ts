@@ -10,6 +10,7 @@ import { AuthorModule } from './author/author.module';
 import { GameModule } from './game/game.module';
 import { ClientModule } from './client/client.module';
 import { PrestamoModule } from './prestamo/prestamo.module';
+import { DateAdapter, NativeDateAdapter } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,12 @@ import { PrestamoModule } from './prestamo/prestamo.module';
     ClientModule,
     PrestamoModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: DateAdapter,
+      useClass: NativeDateAdapter
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -20,6 +20,8 @@ export class PrestamoEditComponent implements OnInit {
   requestFailed!: boolean;
   errorClient!: String;
   errorGame!: String;
+  errorLongDays!: String;
+  errorDateFin!: String;
 
   constructor(
     public dialogRef: MatDialogRef<PrestamoEditComponent>,
@@ -65,7 +67,13 @@ export class PrestamoEditComponent implements OnInit {
   }
 
   onSave() {
-    this.prestamoService.savePrestamo(this.prestamo).subscribe(result => {
+    const prestamoToSave={
+      ...this.prestamo,
+      dateIni: this.formatLocalDate(this.prestamo.dateIni as any),
+      dateFin: this.formatLocalDate(this.prestamo.dateFin as any)
+    }
+    console.log(prestamoToSave);
+    this.prestamoService.savePrestamo(prestamoToSave).subscribe(result => {
         this.dialogRef.close();
     }, res=>{
       this.requestFailed=true;
@@ -77,10 +85,21 @@ export class PrestamoEditComponent implements OnInit {
     console.log(res);
     if(res.error === "CLIENT_ALREADY_HAS_PRESTAMO"){
       this.errorClient='Este cliente ya tiene un préstamo para estas fechas.'
-    }else if (res.error === "GAME_ALREADY_PRESTADO"){
+    }
+    if (res.error === "GAME_ALREADY_PRESTADO"){
       this.errorGame='Este juego ya está prestado para estas fechas.'
     }    
+    if (res.error === "END_DATE_HAS_TO_BE_AFTER"){
+      this.errorDateFin= 'La fecha de devolución no puede ser antes que la de préstamo.'
+    }
+    if (res.error=== "ONLY_14_DAYS"){
+      this.errorLongDays= 'El préstamo no puede durar más de 14 días.'
+    }
   }  
+
+  private formatLocalDate(date: Date): string {
+    return `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+  }
 
   onClose() {
     this.dialogRef.close();

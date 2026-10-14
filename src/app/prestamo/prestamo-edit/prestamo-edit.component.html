@@ -37,6 +37,9 @@
             <mat-datepicker-toggle matSuffix [for]="pickerini"></mat-datepicker-toggle>
             <mat-datepicker #pickerini></mat-datepicker>
             <mat-error>Las fechas de préstamos no pueden estar vacías</mat-error>
+            <div [hidden]="!requestFailed">
+                <small>{{errorLongDays}}</small>
+            </div>
         </mat-form-field>
 
         <mat-form-field>
@@ -44,6 +47,9 @@
             <mat-datepicker-toggle matSuffix [for]="pickerfin"></mat-datepicker-toggle>
             <mat-datepicker #pickerfin></mat-datepicker>
             <mat-error>Las fechas de préstamos no pueden estar vacías</mat-error>
+            <div [hidden]="!requestFailed">
+                <small>{{errorDateFin}}</small>
+            </div>
         </mat-form-field>
     </form>
 

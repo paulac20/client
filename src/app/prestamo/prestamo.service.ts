@@ -23,6 +23,10 @@ export class PrestamoService {
     let url = 'http://localhost:8080/prestamo';
     if (prestamo.id != null) url += '/'+prestamo.id;
 
+    console.log(prestamo.dateIni);
+    console.log(prestamo.dateFin);
+    console.log(JSON.stringify(prestamo, null, 2));
+
     return this.http.put<void>(url, prestamo);
   }
 
