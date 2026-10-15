@@ -5,6 +5,7 @@ import { ClientService } from '../client.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ClientEditComponent } from '../client-edit/client-edit.component';
 import { DialogConfirmationComponent } from 'src/app/core/dialog-confirmation/dialog-confirmation.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-client-list',
@@ -15,10 +16,12 @@ export class ClientListComponent implements OnInit{
 
   dataSource = new MatTableDataSource<Client>();
   displayColumns: string[] = ['id', 'name', 'action'];
+  durationInSeconds=5;
 
   constructor(
     private clientService: ClientService,
     public dialog: MatDialog,
+    private snackBar: MatSnackBar,
   ) { }
 
   ngOnInit(): void {
@@ -55,8 +58,20 @@ export class ClientListComponent implements OnInit{
       if (result){
         this.clientService.deleteClient(client.id).subscribe(result => {
           this.ngOnInit();
+        }, res=>{
+          this.showError(res);
         });
       }
+    });
+  }
+
+  showError(res: any){
+    this.openSnackBar('No se puede eliminar este cliente porque tiene préstamos asociados.')
+  }
+
+  openSnackBar(message: string){
+    this.snackBar.open(message, '', {
+        duration: this.durationInSeconds*1000,
     });
   }
 }

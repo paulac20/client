@@ -97,8 +97,10 @@ export class PrestamoEditComponent implements OnInit {
     }
   }  
 
-  private formatLocalDate(date: Date): string {
-    return `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+  private formatLocalDate(date: any): string {
+    const d = date instanceof Date ? date : new Date;
+
+    return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
   }
 
   onClose() {
