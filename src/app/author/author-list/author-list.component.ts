@@ -7,6 +7,7 @@ import { Pageable } from 'src/app/core/model/page/Pageable';
 import { AuthorEditComponent } from '../author-edit/author-edit.component';
 import { AuthorService } from '../author.service';
 import { Author } from '../model/Author';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
 selector: 'app-author-list',
@@ -18,6 +19,7 @@ export class AuthorListComponent implements OnInit {
   pageNumber: number = 0;
   pageSize: number = 5;
   totalElements: number = 0;
+  durationInSeconds=5;
 
   dataSource = new MatTableDataSource<Author>();
   displayedColumns: string[] = ['id', 'name', 'nationality', 'action'];
@@ -25,6 +27,7 @@ export class AuthorListComponent implements OnInit {
   constructor(
       private authorService: AuthorService,
       public dialog: MatDialog,
+      private snackBar: MatSnackBar,
   ) { }
 
   ngOnInit(): void {
@@ -91,8 +94,20 @@ export class AuthorListComponent implements OnInit {
       if (result) {
         this.authorService.deleteAuthor(author.id).subscribe(result =>  {
           this.ngOnInit();
+        }, res=>{
+          this.showError(res);
         }); 
       }
     });
   }  
+
+  showError(res: any){
+    this.openSnackBar('No se puede eliminar este autor porque tiene juegos asociados.')
+  }
+
+  openSnackBar(message: string){
+    this.snackBar.open(message, '', {
+        duration: this.durationInSeconds*1000,
+    });
+  }
 }

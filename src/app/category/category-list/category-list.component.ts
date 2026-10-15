@@ -5,6 +5,7 @@ import { CategoryService } from '../category.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CategoryEditComponent } from '../category-edit/category-edit.component';
 import { DialogConfirmationComponent } from 'src/app/core/dialog-confirmation/dialog-confirmation.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-category-list',
@@ -15,13 +16,14 @@ export class CategoryListComponent implements OnInit {
 
   dataSource = new MatTableDataSource<Category>();
   displayedColumns: string[] = ['id', 'name', 'action'];
+  durationInSeconds=5;
 
   // Inyectamos el servicio (lo definimos dentro del constructor)
   constructor(
     private categoryService: CategoryService,
     // Nos permite abrir un componente dentro de un diálogo si lo ponemos dentro del constructor
     public dialog: MatDialog,   
-    
+    private snackBar: MatSnackBar,
   ) { }
 
   // Método que se ejecuta al inicializar el componente
@@ -71,9 +73,20 @@ export class CategoryListComponent implements OnInit {
         // Con .subscribe() le decimos que cuando acabe la eliminación, se ejecute ngOnInit()
         this.categoryService.deleteCategory(category.id).subscribe(result => {
           this.ngOnInit();
+        }, res=>{
+          this.showError(res);
         });
       }
     });
   }
 
+  showError(res: any){
+    this.openSnackBar('No se puede eliminar esta categoría porque tiene juegos asociados.')
+  }
+
+  openSnackBar(message: string){
+    this.snackBar.open(message, '', {
+        duration: this.durationInSeconds*1000,
+    });
+  }
 }

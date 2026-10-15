@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { CategoryListComponent } from './category-list/category-list.component';
 import { CategoryEditComponent } from './category-edit/category-edit.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -30,7 +31,8 @@ import { CategoryEditComponent } from './category-edit/category-edit.component';
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSnackBarModule
   ],
   providers: [    // Para indicar los servicios y dependencias que están disponibles para usar
     {
