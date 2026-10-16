@@ -80,28 +80,40 @@ export class PrestamoEditComponent implements OnInit {
     });
   }
 
-  showError(res: any){
-    if(res.error === "CLIENT_ALREADY_HAS_PRESTAMO"){
-      this.errorClient='Este cliente ya tiene un préstamo para estas fechas.'
-    }
-    if (res.error === "GAME_ALREADY_PRESTADO"){
-      this.errorGame='Este juego ya está prestado para estas fechas.'
-    }    
-    if (res.error === "END_DATE_HAS_TO_BE_AFTER"){
-      this.errorDateFin= 'La fecha de devolución no puede ser antes que la de préstamo.'
-    }
-    if (res.error=== "ONLY_14_DAYS"){
-      this.errorLongDays= 'El préstamo no puede durar más de 14 días.'
-    }
-  }  
+  onClose() {
+    this.dialogRef.close();
+  }
 
   private formatLocalDate(date: any): string {
-    const d = date instanceof Date ? date : new Date;
+    const d = date instanceof Date ? date : new Date(date);
 
     return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
   }
 
-  onClose() {
-    this.dialogRef.close();
-  }
+  showError(res: any){
+    if(res.error === "CLIENT_ALREADY_HAS_PRESTAMO"){
+      this.errorClient='Este cliente ya tiene un préstamo para estas fechas.'
+      this.errorDateFin=''
+      this.errorGame=''
+      this.errorLongDays=''
+    }
+    if (res.error === "GAME_ALREADY_PRESTADO"){
+      this.errorGame='Este juego ya está prestado para estas fechas.'
+      this.errorClient=''
+      this.errorDateFin=''
+      this.errorLongDays=''
+    }    
+    if (res.error === "END_DATE_HAS_TO_BE_AFTER"){
+      this.errorDateFin= 'La fecha de devolución no puede ser antes que la de préstamo.'
+      this.errorGame=''
+      this.errorClient=''
+      this.errorLongDays=''
+    }
+    if (res.error=== "ONLY_14_DAYS"){
+      this.errorLongDays= 'El préstamo no puede durar más de 14 días.'
+      this.errorDateFin= ''
+      this.errorGame=''
+      this.errorClient=''
+    }
+  }    
 }

@@ -18,9 +18,9 @@
             </mat-form-field>
 
             <mat-form-field class="dates">
-                <input matInput [(ngModel)]="filterDate" name="date" [matDatepicker]="picker" placeholder="Fecha ...">
+                <input matInput [(ngModel)]="filterDate" name="date" [matDatepicker]="picker" placeholder="Fecha ..." disabled>
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
+                <mat-datepicker #picker disabled="false"></mat-datepicker>
             </mat-form-field>
         </form>
 
