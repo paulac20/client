@@ -11,6 +11,7 @@ import { GameModule } from './game/game.module';
 import { ClientModule } from './client/client.module';
 import { PrestamoModule } from './prestamo/prestamo.module';
 import { DateAdapter, NativeDateAdapter } from '@angular/material/core';
+import { SessionModule } from './session/session.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { DateAdapter, NativeDateAdapter } from '@angular/material/core';
     AuthorModule,
     GameModule,
     ClientModule,
-    PrestamoModule
+    PrestamoModule,
+    SessionModule
   ],
   providers: [
     {
