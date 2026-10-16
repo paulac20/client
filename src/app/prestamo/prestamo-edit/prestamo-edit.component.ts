@@ -72,7 +72,6 @@ export class PrestamoEditComponent implements OnInit {
       dateIni: this.formatLocalDate(this.prestamo.dateIni as any),
       dateFin: this.formatLocalDate(this.prestamo.dateFin as any)
     }
-    console.log(prestamoToSave);
     this.prestamoService.savePrestamo(prestamoToSave).subscribe(result => {
         this.dialogRef.close();
     }, res=>{
@@ -82,7 +81,6 @@ export class PrestamoEditComponent implements OnInit {
   }
 
   showError(res: any){
-    console.log(res);
     if(res.error === "CLIENT_ALREADY_HAS_PRESTAMO"){
       this.errorClient='Este cliente ya tiene un préstamo para estas fechas.'
     }
