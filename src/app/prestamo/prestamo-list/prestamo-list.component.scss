@@ -3,11 +3,17 @@
 
     .filters{
         display: flex;
-        
-        mat-form-field {
+
+        form{
+            display: flex;
+            align-items: center;
+
+            mat-form-field {
             width: 300px;
             margin-right: 20px;
+            }
         }
+        
 
         .buttons{
             flex: auto;
