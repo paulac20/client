@@ -1,1 +1,26 @@
-<p>session-signin works!</p>
+<div class="container">
+    <div class="close" (click)="onClose()">
+        <mat-icon>close</mat-icon>
+    </div>
+
+    <h1>Inicia sesión</h1>
+
+    <form>
+        <mat-form-field>
+            <mat-label>Usuario</mat-label>
+            <input type="text" matInput placeholder="Usuario" required>
+            <mat-error>El nombre de usuario no puede estar vacío</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Contraseña</mat-label>
+            <input type="text" matInput placeholder="Contraseña" required>
+            <mat-error>La contraseña no puede estar vacía</mat-error>
+        </mat-form-field>
+    </form>
+
+    <div class="buttons">
+        <button class="newAccount" mat-flat-button routerLink="/login">Crear nueva cuenta</button>
+        <button mat-flat-button color="primary" (click)="signIn()">Iniciar sesión</button>
+    </div>
+</div>

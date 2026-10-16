@@ -3,6 +3,11 @@
     max-width: 500px;
     padding: 20px;
 
+    h1{
+        color: white;
+        font-weight: bold;
+    }
+
     form {
         display: flex;
         flex-direction: column;
@@ -10,10 +15,10 @@
     }
 
     .buttons {
-      text-align: right;
+        text-align: right;
 
-      button {
-          margin-left: 10px;
-      }
+        button {
+            margin-left: 10px;
+        }
     }
 }

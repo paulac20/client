@@ -27,7 +27,7 @@ import { SessionModule } from './session/session.module';
     GameModule,
     ClientModule,
     PrestamoModule,
-    SessionModule
+    SessionModule,
   ],
   providers: [
     {

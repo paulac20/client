@@ -5,7 +5,7 @@ import { AuthorListComponent } from './author/author-list/author-list.component'
 import { GameListComponent } from './game/game-list/game-list.component';
 import { ClientListComponent } from './client/client-list/client-list.component';
 import { PrestamoListComponent } from './prestamo/prestamo-list/prestamo-list.component';
-import { SessionSigninComponent } from './session/session-signin/session-signin.component';
+import { SessionRegisterComponent } from './session/session-register/session-register.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/games', pathMatch: 'full'},
@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'games', component: GameListComponent },
   { path: 'clients', component: ClientListComponent },
   { path: 'prestamos', component: PrestamoListComponent },
-  { path: 'signIn', component: SessionSigninComponent }
+  { path: 'login', component: SessionRegisterComponent }
 ];
 
 @NgModule({
