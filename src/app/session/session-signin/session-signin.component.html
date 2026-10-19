@@ -20,7 +20,7 @@
     </form>
 
     <div class="buttons">
-        <button class="newAccount" mat-flat-button routerLink="/login">Crear nueva cuenta</button>
+        <button class="newAccount" mat-flat-button (click)="register()">Crear nueva cuenta</button>
         <button mat-flat-button color="primary" (click)="signIn()">Iniciar sesión</button>
     </div>
 </div>

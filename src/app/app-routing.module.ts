@@ -13,8 +13,7 @@ const routes: Routes = [
   { path: 'authors', component: AuthorListComponent },
   { path: 'games', component: GameListComponent },
   { path: 'clients', component: ClientListComponent },
-  { path: 'prestamos', component: PrestamoListComponent },
-  { path: 'login', component: SessionRegisterComponent }
+  { path: 'prestamos', component: PrestamoListComponent }
 ];
 
 @NgModule({
