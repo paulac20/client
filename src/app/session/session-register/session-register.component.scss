@@ -7,4 +7,19 @@
         color:white;
         font-weight: bold;
     }
+
+    form{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .buttons{
+        text-align: right;
+
+        .closeButton{
+            margin-right: 40px;
+            color: black;
+            background-color: rgb(159, 156, 156);
+        }
+    }
 }

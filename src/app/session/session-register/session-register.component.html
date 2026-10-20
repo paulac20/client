@@ -1,3 +1,22 @@
 <div class="container">
     <h1>Crea tu cuenta</h1>
+
+    <form>
+        <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <input type="text" matInput placeholder="Nombre" required>
+            <mat-error>El nombre no puede estar vacío</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Apellidos</mat-label>
+            <input type="text" matInput placeholder="Apellidos" required>
+            <mat-error>Los apellidos no pueden estar vacío</mat-error>
+        </mat-form-field>
+    </form>
+
+    <div class="buttons">
+        <button class="closeButton" mat-flat-button (click)="onClose()">Cancelar</button>
+        <button mat-flat-button color="primary" (click)="register()">Crear cuenta</button>
+    </div>
 </div>
