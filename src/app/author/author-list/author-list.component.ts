@@ -8,6 +8,7 @@ import { AuthorEditComponent } from '../author-edit/author-edit.component';
 import { AuthorService } from '../author.service';
 import { Author } from '../model/Author';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
 selector: 'app-author-list',
@@ -101,7 +102,7 @@ export class AuthorListComponent implements OnInit {
     });
   }  
 
-  showError(res: any){
+  showError(res: HttpErrorResponse){
     this.openSnackBar('No se puede eliminar este autor porque tiene juegos asociados.')
   }
 

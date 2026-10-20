@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CategoryEditComponent } from '../category-edit/category-edit.component';
 import { DialogConfirmationComponent } from 'src/app/core/dialog-confirmation/dialog-confirmation.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-category-list',
@@ -80,7 +81,7 @@ export class CategoryListComponent implements OnInit {
     });
   }
 
-  showError(res: any){
+  showError(res: HttpErrorResponse){
     this.openSnackBar('No se puede eliminar esta categoría porque tiene juegos asociados.')
   }
 

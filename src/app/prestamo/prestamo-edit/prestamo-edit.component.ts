@@ -112,7 +112,7 @@ export class PrestamoEditComponent implements OnInit {
       this.deleteErrors();
       this.errorDateFin= 'La fecha de devolución no puede ser antes que la de préstamo.'
     }
-    if (res.error=== "ONLY_14_DAYS"){
+    if (res.error=== "ONLY_FOURTEEN_DAYS"){
       this.deleteErrors();
       this.errorLongDays= 'El préstamo no puede durar más de 14 días.'
     }

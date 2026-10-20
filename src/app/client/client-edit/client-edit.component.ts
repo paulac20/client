@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { Client } from '../model/Client';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ClientService } from '../client.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-client-edit',
@@ -38,7 +39,7 @@ export class ClientEditComponent implements OnInit{
     });
   }
 
-  showError(res: any){
+  showError(res: HttpErrorResponse){
     this.error='Ya existe un cliente con ese nombre.'
   }
 

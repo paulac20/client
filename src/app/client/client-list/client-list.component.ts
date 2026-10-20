@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ClientEditComponent } from '../client-edit/client-edit.component';
 import { DialogConfirmationComponent } from 'src/app/core/dialog-confirmation/dialog-confirmation.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-client-list',
@@ -65,7 +66,7 @@ export class ClientListComponent implements OnInit{
     });
   }
 
-  showError(res: any){
+  showError(res: HttpErrorResponse){
     this.openSnackBar('No se puede eliminar este cliente porque tiene préstamos asociados.')
   }
 
