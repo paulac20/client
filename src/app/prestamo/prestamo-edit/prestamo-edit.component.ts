@@ -23,6 +23,10 @@ export class PrestamoEditComponent implements OnInit {
   errorGame!: String;
   errorLongDays!: String;
   errorDateFin!: String;
+  minFin!: Date;
+  maxFin!: Date;
+  minIni!: Date;
+  maxIni!: Date;
 
   constructor(
     public dialogRef: MatDialogRef<PrestamoEditComponent>,
@@ -115,5 +119,15 @@ export class PrestamoEditComponent implements OnInit {
     this.errorDateFin='';
     this.errorGame='';
     this.errorLongDays='';
+  }
+
+  dateMinMaxValidation(){
+    this.minFin= new Date(String(this.prestamo.dateIni));
+    this.maxFin= new Date(String(this.prestamo.dateIni));
+    this.maxFin.setDate(this.maxFin.getDate() + 14);
+
+    this.maxIni= new Date(String(this.prestamo.dateFin));
+    this.minIni= new Date(String(this.prestamo.dateFin));
+    this.minIni.setDate(this.minIni.getDate() - 14);
   }
 }
