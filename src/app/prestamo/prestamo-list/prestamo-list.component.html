@@ -60,11 +60,11 @@
         <ng-container matColumnDef="action">            
             <mat-header-cell *matHeaderCellDef></mat-header-cell>
             <mat-cell *matCellDef="let element">
-                <button mat-icon-button color="primary" (click)="editPrestamo(element)">
+                <button class="edit" mat-icon-button (click)="editPrestamo(element)">
                     <mat-icon>edit</mat-icon>
                 </button>
 
-                <button mat-icon-button color="accent" (click)="deletePrestamo(element)">
+                <button mat-icon-button (click)="deletePrestamo(element)">
                     <mat-icon>clear</mat-icon>
                 </button>
             </mat-cell>

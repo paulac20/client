@@ -16,10 +16,10 @@
             <mat-header-cell *matHeaderCellDef></mat-header-cell>
 
             <mat-cell *matCellDef="let element">
-                <button mat-icon-button color="primary" (click)="editClient(element)">
+                <button class="edit" mat-icon-button (click)="editClient(element)">
                     <mat-icon>edit</mat-icon>
                 </button>
-                <button mat-icon-button color="primary" (click)="deleteClient(element)">
+                <button mat-icon-button (click)="deleteClient(element)">
                     <mat-icon>clear</mat-icon>
                 </button>
             </mat-cell>

@@ -8,6 +8,8 @@ import { ClientService } from 'src/app/client/client.service';
 import { Prestamo } from '../model/Prestamo';
 import { HttpErrorResponse } from '@angular/common/http';
 
+const maxDaysPrestamo=14;
+
 @Component({
   selector: 'app-prestamo-edit',
   templateUrl: './prestamo-edit.component.html',
@@ -69,6 +71,8 @@ export class PrestamoEditComponent implements OnInit {
         }
       }
     );
+
+    this.dateMinMaxValidation();
   }
 
   onSave() {
@@ -124,10 +128,10 @@ export class PrestamoEditComponent implements OnInit {
   dateMinMaxValidation(){
     this.minFin= new Date(String(this.prestamo.dateIni));
     this.maxFin= new Date(String(this.prestamo.dateIni));
-    this.maxFin.setDate(this.maxFin.getDate() + 14);
+    this.maxFin.setDate(this.maxFin.getDate() + maxDaysPrestamo);
 
     this.maxIni= new Date(String(this.prestamo.dateFin));
     this.minIni= new Date(String(this.prestamo.dateFin));
-    this.minIni.setDate(this.minIni.getDate() - 14);
+    this.minIni.setDate(this.minIni.getDate() - maxDaysPrestamo);
   }
 }
