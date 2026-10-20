@@ -6,6 +6,7 @@ import { Game } from 'src/app/game/model/Game';
 import { PrestamoService } from '../prestamo.service';
 import { ClientService } from 'src/app/client/client.service';
 import { Prestamo } from '../model/Prestamo';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-prestamo-edit',
@@ -90,30 +91,29 @@ export class PrestamoEditComponent implements OnInit {
     return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
   }
 
-  showError(res: any){
+  showError(res: HttpErrorResponse){
     if(res.error === "CLIENT_ALREADY_HAS_PRESTAMO"){
+      this.deleteErrors();
       this.errorClient='Este cliente ya tiene un préstamo para estas fechas.'
-      this.errorDateFin=''
-      this.errorGame=''
-      this.errorLongDays=''
     }
     if (res.error === "GAME_ALREADY_PRESTADO"){
+      this.deleteErrors();
       this.errorGame='Este juego ya está prestado para estas fechas.'
-      this.errorClient=''
-      this.errorDateFin=''
-      this.errorLongDays=''
     }    
     if (res.error === "END_DATE_HAS_TO_BE_AFTER"){
+      this.deleteErrors();
       this.errorDateFin= 'La fecha de devolución no puede ser antes que la de préstamo.'
-      this.errorGame=''
-      this.errorClient=''
-      this.errorLongDays=''
     }
     if (res.error=== "ONLY_14_DAYS"){
+      this.deleteErrors();
       this.errorLongDays= 'El préstamo no puede durar más de 14 días.'
-      this.errorDateFin= ''
-      this.errorGame=''
-      this.errorClient=''
     }
   }    
+
+  deleteErrors(){
+    this.errorClient='';
+    this.errorDateFin='';
+    this.errorGame='';
+    this.errorLongDays='';
+  }
 }

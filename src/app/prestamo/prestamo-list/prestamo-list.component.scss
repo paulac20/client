@@ -3,21 +3,21 @@
 
     .filters{
         display: flex;
+        align-items: baseline;
 
         form{
             display: flex;
-            align-items: center;
 
             mat-form-field {
-            width: 300px;
-            margin-right: 20px;
+                width: 300px;
+                margin-right: 20px;
             }
         }
         
 
         .buttons{
-            flex: auto;
-            align-self: center;
+            display: flex;
+            margin-left: auto;
 
             .clearFilter{
                 margin-left: 15px;

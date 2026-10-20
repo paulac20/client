@@ -4,6 +4,9 @@ import { Client } from './model/Client';
 import { CLIENT_DATA } from './model/mock-clients';
 import { HttpClient } from '@angular/common/http';
 
+const pageUrl= 'http://localhost:8080/'
+const page='client'
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,17 +17,17 @@ export class ClientService {
   ) { }
 
   getClients(): Observable<Client[]>{
-    return this.http.get<Client[]>('http://localhost:8080/client');
+    return this.http.get<Client[]>(pageUrl + page);
   }
 
   saveClient(client:Client): Observable<Client>{
-    let url = 'http://localhost:8080/client';
+    let url = pageUrl + page;
     if (client.id != null) url += '/'+client.id;
     
     return this.http.put<Client>(url, client);
   }
 
   deleteClient(idClient: number): Observable<any>{
-    return this.http.delete('http://localhost:8080/client'+'/'+idClient);
+    return this.http.delete(pageUrl + page + '/' + idClient);
   }
 }

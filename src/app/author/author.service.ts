@@ -6,6 +6,9 @@ import { Author } from './model/Author';
 import { AuthorPage } from './model/AuthorPage';
 import { AUTHOR_DATA_LIST } from './model/mock-authors-list';
 
+const pageUrl= 'http://localhost:8080/'
+const page='author'
+
 @Injectable({
   providedIn: 'root'
 })
@@ -16,22 +19,22 @@ export class AuthorService {
   ) {}
 
   getAuthors(pageable: Pageable): Observable<AuthorPage> {
-      return this.http.post<AuthorPage>('http://localhost:8080/author', {pageable:pageable});
+      return this.http.post<AuthorPage>(pageUrl + page, {pageable:pageable});
   }
 
   saveAuthor(author: Author): Observable<void> {
-    let url = 'http://localhost:8080/author';
+    let url = pageUrl + page;
     if (author.id != null) url += '/'+author.id;
 
     return this.http.put<void>(url, author);
   }
 
   deleteAuthor(idAuthor : number): Observable<void> {
-    return this.http.delete<void>('http://localhost:8080/author/'+idAuthor);
+    return this.http.delete<void>(pageUrl + page + idAuthor);
   }    
 
   // Para poder recuperar una lista de autores. Antes sólo teníamos una página
   getAllAuthors(): Observable<Author[]> {
-        return this.http.get<Author[]>('http://localhost:8080/author');
+        return this.http.get<Author[]>(pageUrl + page);
     }
 }

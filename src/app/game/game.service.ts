@@ -4,6 +4,9 @@ import { Game } from './model/Game';
 import { GAME_DATA } from './model/mock-games';
 import { HttpClient } from '@angular/common/http';
 
+const pageUrl='http://localhost:8080/'
+const page='game'
+
 @Injectable({
     providedIn: 'root'
 })
@@ -18,7 +21,7 @@ export class GameService {
     }
 
     saveGame(game: Game): Observable<void> {
-        let url = 'http://localhost:8080/game';
+        let url = pageUrl + page;
 
         if (game.id != null) {
             url += '/'+game.id;
@@ -39,7 +42,7 @@ export class GameService {
             params += "idCategory="+categoryId;
         }
 
-        let url = 'http://localhost:8080/game'
+        let url = pageUrl + page
 
         if (params == '') return url;
         else return url + '?'+params;

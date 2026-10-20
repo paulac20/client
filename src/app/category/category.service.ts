@@ -4,6 +4,9 @@ import { Observable, of} from 'rxjs';
 import { Category } from './model/category';
 import { CATEGORY_DATA } from './model/mock-categories';
 
+const pageUrl= 'http://localhost:8080/'
+const page='category'
+
 @Injectable({
   providedIn: 'root'
 })
@@ -18,12 +21,12 @@ export class CategoryService {
   // Observable: Objeto que espera datos que pueden llegar ahora o en el futuro
   getCategories(): Observable<Category[]>{
     // Devolvemos las categorías obtenidas en el backend
-    return this.http.get<Category[]>('http://localhost:8080/category');
+    return this.http.get<Category[]>(pageUrl + page);
   }
 
   // Médodo para editar las categorías
   saveCategory(category: Category): Observable<Category>{
-    let url = 'http://localhost:8080/category';
+    let url = pageUrl + page;
     if (category.id != null) url += '/'+category.id;
 
     return this.http.put<Category>(url, category);
@@ -31,6 +34,6 @@ export class CategoryService {
 
   // Método para eliminar las categorías
   deleteCategory(idCategory: number): Observable<any>{
-    return this.http.delete('http://localhost:8080/category/'+idCategory);
+    return this.http.delete(pageUrl + page + idCategory);
   }
 }
