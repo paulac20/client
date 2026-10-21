@@ -14,9 +14,14 @@
 
         <mat-form-field>
             <mat-label>Contraseña</mat-label>
-            <input type="text" matInput placeholder="Contraseña" required>
+            <input type="password" matInput placeholder="Contraseña" #passwordField required>
             <mat-error>La contraseña no puede estar vacía</mat-error>
         </mat-form-field>
+
+        <div>
+            <input class="checkbox" type="checkbox" id="showPassword" (click)="passwordVisibility()">
+            <label class="text" for="showPassword">Show Password</label>
+        </div>
     </form>
 
     <div class="buttons">

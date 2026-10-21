@@ -11,6 +11,25 @@
     form{
         display: flex;
         flex-direction: column;
+
+        .error{
+            color: red;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        div{
+            margin-bottom: 20px;
+            .checkbox{
+            cursor: pointer;
+            }
+
+            .text{
+                color: white;
+                margin-left: 10px;
+            }
+        }
+        
     }
 
     .buttons{

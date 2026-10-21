@@ -13,6 +13,57 @@
             <input type="text" matInput placeholder="Apellidos" required>
             <mat-error>Los apellidos no pueden estar vacío</mat-error>
         </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Edad</mat-label>
+            <input type="number" matInput placeholder="Edad" required min="18" max="99">
+            <mat-error>La edad no puede estar vacía</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Correo</mat-label>
+            <input type="email" matInput placeholder="Correo" name="mail" [(ngModel)]="usser.mail" #mail="ngModel" email required>
+            <mat-error *ngIf="mail.errors?.['required']">El correo no puede estar vacío</mat-error>
+            <mat-error *ngIf="mail.errors?.['email']">Dirección de correo no válida</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Teléfono</mat-label>
+            <input type="number" matInput placeholder="Teléfono" min="18" max="99">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Nombre de usuario</mat-label>
+            <input type="text" matInput placeholder="Usuario" required>
+            <mat-error>El nombre de usuario no puede estar vacío</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Contraseña</mat-label>
+            <input type="password" matInput placeholder="Contraseña" #passwordField (input)="showError()" required>
+            <mat-error>La contraseña no puede estar vacía</mat-error>
+        </mat-form-field>
+
+        <div>
+            <input class="checkbox" type="checkbox" id="showPassword" (click)="passwordVisibility()">
+            <label class="text" for="showPassword">Show Password</label>
+        </div>
+
+        <mat-form-field>
+            <mat-label>Repita la contraseña</mat-label>
+            <input type="password" matInput placeholder="Escriba de nuevo la contraseña" #passwordField2 (input)="showError()" required>
+            <mat-error>Confirme la contraseña</mat-error>
+        </mat-form-field>
+
+        <div class="error">
+            <small>{{passwordError}}</small>
+        </div>
+
+        <div>
+            <input class="checkbox" type="checkbox" id="showPassword" (click)="passwordVisibilityRep()">
+            <label class="text" for="showPassword">Show Password</label>
+        </div>
+        
     </form>
 
     <div class="buttons">
