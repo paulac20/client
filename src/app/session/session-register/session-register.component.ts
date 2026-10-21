@@ -11,7 +11,7 @@ export class SessionRegisterComponent implements OnInit{
 
   @ViewChild('passwordField') passwordField!: ElementRef<HTMLInputElement>;
   @ViewChild('passwordField2') passwordField2!: ElementRef<HTMLInputElement>;
-  @ViewChild('mail') mail!: ElementRef<HTMLInputElement>;
+  @ViewChild('email') email!: ElementRef<HTMLInputElement>;
   passwordError!: String;
   usser: Usser = new Usser();
 

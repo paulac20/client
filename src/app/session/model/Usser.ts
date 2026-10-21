@@ -3,7 +3,7 @@ export class Usser {
     name!: string;
     surname!: string;
     age!: number;
-    mail!: string;
+    email!: string;
     phone!: number;
     usser!: string;
     password!: string;
