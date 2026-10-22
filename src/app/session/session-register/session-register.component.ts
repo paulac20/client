@@ -1,6 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Usser } from '../model/Usser';
+import { SessionService } from '../session.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-session-register',
@@ -13,18 +16,27 @@ export class SessionRegisterComponent implements OnInit{
   @ViewChild('passwordField2') passwordField2!: ElementRef<HTMLInputElement>;
   @ViewChild('email') email!: ElementRef<HTMLInputElement>;
   passwordError!: String;
-  usser: Usser = new Usser();
+  usserError!: String;
+  usser!: Usser;
+  durationInSeconds=5;
 
   constructor(
-    private dialogRef: MatDialogRef<SessionRegisterComponent>
+    private dialogRef: MatDialogRef<SessionRegisterComponent>,
+    private sessionService: SessionService,
+    private snackBar: MatSnackBar,
   ){}
 
   ngOnInit(): void {
-    
+    this.usser= new Usser();
   }
 
   register(){
-
+    this.sessionService.register(this.usser).subscribe(result=>{
+      this.dialogRef.close();
+      this.openSnackBar('Se ha registrado correctamente.')
+    }, res=>{
+      this.validateExistsUsser(res);
+    });
   }
 
   onClose(){
@@ -64,6 +76,20 @@ export class SessionRegisterComponent implements OnInit{
     if(field2 == ''){
       this.passwordError = '';
     }
+  }
+
+  validateExistsUsser(res: HttpErrorResponse){
+    if(res.error === "EXISTS_USSER"){
+      this.usserError= 'Este usuario ya está en uso.';
+    } else {
+      this.usserError= '';
+    }
+  }
+
+  openSnackBar(message: string){
+    this.snackBar.open(message, '', {
+      duration: this.durationInSeconds*1000,
+    });
   }
 
 }

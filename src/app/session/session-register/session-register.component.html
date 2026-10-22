@@ -4,19 +4,19 @@
     <form>
         <mat-form-field>
             <mat-label>Nombre</mat-label>
-            <input type="text" matInput placeholder="Nombre" required>
+            <input type="text" matInput placeholder="Nombre" [(ngModel)]="usser.name" name="name" required>
             <mat-error>El nombre no puede estar vacío</mat-error>
         </mat-form-field>
 
         <mat-form-field>
             <mat-label>Apellidos</mat-label>
-            <input type="text" matInput placeholder="Apellidos" required>
+            <input type="text" matInput placeholder="Apellidos" [(ngModel)]="usser.surname" name="surname" required>
             <mat-error>Los apellidos no pueden estar vacío</mat-error>
         </mat-form-field>
 
         <mat-form-field>
             <mat-label>Edad</mat-label>
-            <input type="number" matInput placeholder="Edad" required min="1" max="99">
+            <input type="number" matInput placeholder="Edad" [(ngModel)]="usser.age" name="age" required min="1" max="99">
             <mat-error>La edad no puede estar vacía</mat-error>
         </mat-form-field>
 
@@ -29,18 +29,20 @@
 
         <mat-form-field>
             <mat-label>Teléfono</mat-label>
-            <input type="number" matInput placeholder="Teléfono" min="18" max="99">
+            <input type="number" matInput placeholder="Teléfono" [(ngModel)]="usser.phone" name="phone">
         </mat-form-field>
 
         <mat-form-field>
             <mat-label>Nombre de usuario</mat-label>
-            <input type="text" matInput placeholder="Usuario" required>
+            <input type="text" matInput placeholder="Usuario" [(ngModel)]="usser.usser" name="usser" required>
             <mat-error>El nombre de usuario no puede estar vacío</mat-error>
         </mat-form-field>
 
+        <small class="error">{{usserError}}</small>
+
         <mat-form-field>
             <mat-label>Contraseña</mat-label>
-            <input type="password" matInput placeholder="Contraseña" #passwordField (input)="showError()" required>
+            <input type="password" matInput placeholder="Contraseña" #passwordField (input)="showError()" [(ngModel)]="usser.password" name="password" required>
             <mat-error>La contraseña no puede estar vacía</mat-error>
         </mat-form-field>
 
@@ -55,9 +57,7 @@
             <mat-error>Confirme la contraseña</mat-error>
         </mat-form-field>
 
-        <div class="error">
-            <small>{{passwordError}}</small>
-        </div>
+        <small class="error">{{passwordError}}</small>
 
         <div>
             <input class="checkbox" type="checkbox" id="showPassword" (click)="passwordVisibilityRep()">

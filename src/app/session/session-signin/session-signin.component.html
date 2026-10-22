@@ -8,13 +8,13 @@
     <form>
         <mat-form-field>
             <mat-label>Usuario</mat-label>
-            <input type="text" matInput placeholder="Usuario" required>
+            <input type="text" matInput placeholder="Usuario" [(ngModel)]="login.usser" name="usser" required>
             <mat-error>El nombre de usuario no puede estar vacío</mat-error>
         </mat-form-field>
 
         <mat-form-field>
             <mat-label>Contraseña</mat-label>
-            <input type="password" matInput placeholder="Contraseña" #passwordField required>
+            <input type="password" matInput placeholder="Contraseña" #passwordField [(ngModel)]="login.password" name="password" required>
             <mat-error>La contraseña no puede estar vacía</mat-error>
         </mat-form-field>
 
@@ -22,6 +22,8 @@
             <input class="checkbox" type="checkbox" id="showPassword" (click)="passwordVisibility()">
             <label class="text" for="showPassword">Show Password</label>
         </div>
+
+        <small class="error">{{loginError}}</small>
     </form>
 
     <div class="buttons">

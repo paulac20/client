@@ -2,10 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Login } from './model/Login';
 import { Observable } from 'rxjs';
+import { Usser } from './model/Usser';
 
 const pageUrl= 'http://localhost:8080/'
-const login= 'login'
-const register= 'register'
+const pageEndpoint= 'session/'
+const loginEndpoint= 'login'
+const registerEndpoint= 'register'
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +19,10 @@ export class SessionService {
   ) { }
 
   login(login: Login): Observable<void> {
-    return null;
+    return this.http.post<void>(pageUrl + pageEndpoint + loginEndpoint, login);
+  }
+
+  register(usser: Usser): Observable<Usser>{
+    return this.http.post<Usser>(pageUrl + pageEndpoint + registerEndpoint, usser);
   }
 }
