@@ -8,6 +8,7 @@ const pageUrl= 'http://localhost:8080/'
 const pageEndpoint= 'session/'
 const loginEndpoint= 'login'
 const registerEndpoint= 'register'
+const authenticatedEndpoint = 'isAuthenticated'
 
 @Injectable({
   providedIn: 'root'
@@ -24,5 +25,9 @@ export class SessionService {
 
   register(usser: Usser): Observable<Usser>{
     return this.http.post<Usser>(pageUrl + pageEndpoint + registerEndpoint, usser);
+  }
+
+  isAuthenticated(): Observable<boolean>{
+    return this.http.get<boolean>(pageUrl + pageEndpoint + authenticatedEndpoint);
   }
 }

@@ -59,7 +59,7 @@ export class SessionSigninComponent implements OnInit{
 
   showError(res: HttpErrorResponse){
     if(res.error === 'INCORRECT_LOGIN'){
-      this.loginError= 'Usuario o contraseña incorrectos.'
+      this.loginError= 'Usuario o contraseña incorrecto.'
     } else{
       this.loginError='';
     }
