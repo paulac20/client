@@ -1,8 +1,9 @@
 <div class="container">
     <h1 *ngIf="game.id == null">Crear juego</h1>
-    <h1 *ngIf="game.id != null">Modificar juego</h1>
+    <h1 *ngIf="game.id != null && sessionService.isAuthenticated()">Modificar juego</h1>
+    <h1 *ngIf="!sessionService.isAuthenticated()">{{game.title}}</h1>
 
-    <form>
+    <form *ngIf="sessionService.isAuthenticated()">
         <mat-form-field>
             <mat-label>Identificador</mat-label>
             <input type="text" matInput placeholder="Identificador" [(ngModel)]="game.id" name="id" disabled>
@@ -39,6 +40,6 @@
 
     <div class="buttons">
         <button mat-stroked-button (click)="onClose()">Cerrar</button>
-        <button mat-flat-button color="primary" (click)="onSave()">Guardar</button>
+        <button *ngIf="sessionService.isAuthenticated()" mat-flat-button color="primary" (click)="onSave()">Guardar</button>
     </div>
 </div>

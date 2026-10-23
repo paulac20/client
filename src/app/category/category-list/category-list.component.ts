@@ -7,6 +7,7 @@ import { CategoryEditComponent } from '../category-edit/category-edit.component'
 import { DialogConfirmationComponent } from 'src/app/core/dialog-confirmation/dialog-confirmation.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpErrorResponse } from '@angular/common/http';
+import { SessionService } from 'src/app/session/session.service';
 
 @Component({
   selector: 'app-category-list',
@@ -25,6 +26,7 @@ export class CategoryListComponent implements OnInit {
     // Nos permite abrir un componente dentro de un diálogo si lo ponemos dentro del constructor
     public dialog: MatDialog,   
     private snackBar: MatSnackBar,
+    public sessionService: SessionService
   ) { }
 
   // Método que se ejecuta al inicializar el componente

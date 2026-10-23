@@ -17,10 +17,10 @@
             <!--*matCellDef indica a Angular el contenido que tiene que tener cada celda.
             Con "let element" se mete cada objeto de los datos en la variable element temporalmente-->
             <mat-cell *matCellDef="let element">
-                <button class="edit" mat-icon-button (click)="editCategory(element)">
+                <button *ngIf="sessionService.isAuthenticated()" class="edit" mat-icon-button (click)="editCategory(element)">
                     <mat-icon>edit</mat-icon>
                 </button>
-                <button mat-icon-button (click)="deleteCategory(element)">
+                <button *ngIf="sessionService.isAuthenticated()" mat-icon-button (click)="deleteCategory(element)">
                     <mat-icon>clear</mat-icon>
                 </button>
             </mat-cell>
@@ -33,7 +33,7 @@
 
     <div class="buttons">   <!--Botón para añadir nuevas categorías-->
         <!--Enlazamos el método al click del botón-->
-        <button mat-flat-button color="primary" (click)="createCategory()">Nueva categoría</button>
+        <button *ngIf="sessionService.isAuthenticated()" mat-flat-button color="primary" (click)="createCategory()">Nueva categoría</button>
     </div>   
 </div>
 

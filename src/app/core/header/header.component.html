@@ -18,15 +18,19 @@
                     <a routerLink="/authors" routerLinkActive="active">Autores</a>
                 </div>
                 <div class="header_button">
-                    <a routerLink="/clients" routerLinkActive="active">Clientes</a>
+                    <a routerLink="/clients" *ngIf="sessionService.isAuthenticated()" routerLinkActive="active">Clientes</a>
                 </div>
                 <div class="header_button">
-                    <a routerLink="/prestamos" routerLinkActive="active">Préstamos</a>
+                    <a routerLink="/prestamos" *ngIf="sessionService.isAuthenticated()" routerLinkActive="active">Préstamos</a>
                 </div>
             </div>
 
-            <div class="header_login" (click)="signIn()">
+            <div *ngIf="!sessionService.isAuthenticated()" class="header_login" (click)="signIn()">
                 <mat-icon>account_circle</mat-icon> Sign in
+            </div>
+
+            <div *ngIf="sessionService.isAuthenticated()" class="header_login" (click)="logout()">
+                <mat-icon>account_circle</mat-icon>Bienvenido
             </div>
         </div>
     </mat-toolbar-row>

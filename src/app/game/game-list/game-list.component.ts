@@ -5,6 +5,7 @@ import { Category } from 'src/app/category/model/category';
 import { GameEditComponent } from '../game-edit/game-edit.component';
 import { GameService } from '../game.service';
 import { Game } from '../model/Game';
+import { SessionService } from 'src/app/session/session.service';
 
 @Component({
     selector: 'app-game-list',
@@ -22,6 +23,7 @@ export class GameListComponent implements OnInit {
         private gameService: GameService,
         private categoryService: CategoryService,
         public dialog: MatDialog,
+        public sessionService: SessionService
     ) { }
 
     ngOnInit(): void {

@@ -6,6 +6,7 @@ import { CategoryService } from 'src/app/category/category.service';
 import { Category } from 'src/app/category/model/category';
 import { GameService } from '../game.service';
 import { Game } from '../model/Game';
+import { SessionService } from 'src/app/session/session.service';
 
 @Component({
     selector: 'app-game-edit',
@@ -24,6 +25,7 @@ export class GameEditComponent implements OnInit {
         private gameService: GameService,
         private categoryService: CategoryService,
         private authorService: AuthorService,
+        public sessionService: SessionService
     ) { }
 
     ngOnInit(): void {

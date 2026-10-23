@@ -9,6 +9,7 @@ import { AuthorService } from '../author.service';
 import { Author } from '../model/Author';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpErrorResponse } from '@angular/common/http';
+import { SessionService } from 'src/app/session/session.service';
 
 @Component({
 selector: 'app-author-list',
@@ -29,6 +30,7 @@ export class AuthorListComponent implements OnInit {
       private authorService: AuthorService,
       public dialog: MatDialog,
       private snackBar: MatSnackBar,
+      public sessionService: SessionService
   ) { }
 
   ngOnInit(): void {

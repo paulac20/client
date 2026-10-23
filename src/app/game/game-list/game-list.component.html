@@ -31,6 +31,6 @@
     </div>
 
     <div class="buttons">
-        <button mat-flat-button color="primary" (click)="createGame()">Nuevo juego</button>            
+        <button *ngIf="sessionService.isAuthenticated()" mat-flat-button color="primary" (click)="createGame()">Nuevo juego</button>            
     </div>   
 </div>

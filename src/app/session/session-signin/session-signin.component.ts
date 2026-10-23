@@ -32,6 +32,7 @@ export class SessionSigninComponent implements OnInit{
 
   signIn(){
     this.sessionService.login(this.login).subscribe(result=>{
+      localStorage.setItem('authenticated', 'true');
       this.dialogRef.close();
       this.openSnackBar('Se ha iniciado sesión correctamente.')
     }, res => {

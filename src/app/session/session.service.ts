@@ -27,7 +27,7 @@ export class SessionService {
     return this.http.post<Usser>(pageUrl + pageEndpoint + registerEndpoint, usser);
   }
 
-  isAuthenticated(): Observable<boolean>{
-    return this.http.get<boolean>(pageUrl + pageEndpoint + authenticatedEndpoint);
+  isAuthenticated(): boolean{
+    return localStorage.getItem('authenticated') === 'true';
   }
 }
